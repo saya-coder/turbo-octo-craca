@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>Jogo da Velha</title>
+<link rel="sortcut icon" href="icon.png" type="image/x-icon" />
+<style type="text/css">
+
+#mostrador{
+    margin: auto;
+    margin-top: 40px;
+    width:252px;
+    height: 80px;
+}
+
+.nha{
+    width: 100px;
+    height: 100px;
+    background: #000000;
+    font-size: 80px;
+    color: #7ff000;
+    cursor:grab;
+    margin: auto;
+
+}
+.borda{
+    background: #bb4343;
+    margin: auto;
+}
+
+</style>
+<script language="JavaScript" type="text/javascript">
+
+letra = "X";
+ 
+function joga(celula){
+    celulaclicada = document.getElementById(celula).innerHTML;
+   if (celulaclicada == "X" || celulaclicada == "O"){
+       alert("ô, nesse quadrado não, garai");
+   }else{
+        document.getElementById(celula).innerHTML = letra;
+        if (letra == "X"){
+            letra = "O";
+        }else{
+            letra = "X";
+        }
+   }
+}
+ 
+function verif(){
+   c11 = document.getElementById('cel11').innerHTML;
+   c12 = document.getElementById('cel12').innerHTML;
+   c13 = document.getElementById('cel13').innerHTML;
+   c21 = document.getElementById('cel21').innerHTML;
+   c22 = document.getElementById('cel22').innerHTML;
+   c23 = document.getElementById('cel23').innerHTML;
+   c31 = document.getElementById('cel31').innerHTML;
+   c32 = document.getElementById('cel32').innerHTML;
+   c33 = document.getElementById('cel33').innerHTML;
+   if (((c11 != '') && (c12 != '') && (c13 != '') && (c11 == c12) && (c12 == c13)) || ((c11 != '') && (c22 != '') && (c33 != '') && (c11 == c22) && (c22 == c33)) || ((c11 != '') && (c21 != '') && (c31 != '') && (c11 == c21) && (c21 == c31)) || ((c21 != '') && (c22 != '') && (c23 != '') && (c21 == c22) && (c22 == c23)) || ((c31 != '') && (c32 != '') && (c33 != '') && (c31 == c32) && (c32 == c33)) || ((c12 != '') && (c22 != '') && (c32 != '') && (c12 == c22) && (c22 == c32)) || ((c13 != '') && (c23 != '') && (c33 != '') && (c13 == c23) && (c23 == c33)) || ((c31 != '') && (c22 != '') && (c13 != '') && (c31 == c22) && (c22 == c13))){
+       alert('Cansa de ganhar nunk?');
+      novo();
+   }
+}
+ 
+function novo(){
+    for (i=1; i<4; i++){
+       for (j=1; j<4; j++){
+          nomecelula = 'cel' + i + j
+           document.getElementById(nomecelula).innerHTML = '';
+      
+      }
+   }
+}
+ 
+ 
+
+</script>
+ 
+</head>
+<body>
+  <background: #000000;></background:>
+
+    <div id="mostrador">
+        <p style="float: left;margin-right: 10px;"> Vez do Jogador:</p>
+        <img src="xis.png" border="0" height="80">
+     </div>
+
+
+     <div id="mostrador">
+        <p style="float: left;margin-right: 10px;"> Vez do Jogador:</p>
+        <img src="bola.jpeg" border="0" height="80">
+     </div>
+
+
+
+
+
+<table class="borda">
+ 
+<tr>
+<td align="center" valign="middle" id="cel11" class="nha" onclick="joga(this.id);verif();"></td>
+<td align="center" valign="middle" id="cel12" class="nha" onclick="joga(this.id);verif();"></td>
+<td align="center" valign="middle" id="cel13" class="nha" onclick="joga(this.id);verif();"></td>
+</tr>
+ 
+<tr>
+<td align="center" valign="middle" id="cel21" class="nha" onclick="joga(this.id);verif();"></td>
+<td align="center" valign="middle" id="cel22" class="nha" onclick="joga(this.id);verif();"></td>
+<td align="center" valign="middle" id="cel23" class="nha" onclick="joga(this.id);verif();"></td>
+</tr>
+ 
+<tr>
+<td align="center" valign="middle" id="cel31" class="nha" onclick="joga(this.id);verif();"></td>
+<td align="center" valign="middle" id="cel32" class="nha" onclick="joga(this.id);verif();"></td>
+<td align="center" valign="middle" id="cel33" class="nha" onclick="joga(this.id);verif();"></td>
+</tr>
+ 
+</table>
+</body>
+</html>
